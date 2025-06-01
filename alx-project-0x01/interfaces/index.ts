@@ -5,29 +5,42 @@ export interface Geo {
   lng: string;
 }
 
-export interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: Geo;
-}
+// export interface Address {
+//   street: string;
+//   suite: string;
+//   city: string;
+//   zipcode: string;
+//   geo: Geo;
+// }
 
-export interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-}
+// export interface Company {
+//   name: string;
+//   catchPhrase: string;
+//   bs: string;
+// }
 
 export interface UserProps {
   id: number;
   name: string;
   username: string;
   email: string;
-  address: Address;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode:number;
+    geo:{
+      lat:string;
+      lng:string;
+    }
+  };
   phone: string;
   website: string;
-  company: Company;
+  company: {
+    name:string;
+    catchPhrase:string;
+    bs:string;
+  };
 }
 
 export interface PostProps {

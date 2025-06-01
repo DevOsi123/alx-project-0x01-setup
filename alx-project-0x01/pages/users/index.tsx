@@ -1,33 +1,32 @@
 // pages/users/index.tsx
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import UserCard from '../../components/common/UserCard';
-import { UserProps } from '../../interfaces';
+import UserCard from '../../components/common/UserCards'; // ✅ path depends on where you placed it
+import { UserProps } from '../../interfaces'; // ✅ make sure this interface is defined correctly
 
 interface UsersPageProps {
-  users: UserProps[];
+  posts: UserProps[];
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users: UserProps[] = await response.json();
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const posts = await response.json();
 
   return {
     props: {
-      users,
+      posts,
     },
   };
 };
 
-export default function UsersPage({ users }: UsersPageProps) {
-  const [userList, setUserList] = useState(users);
-
+export default function Users({ posts }: UsersPageProps) { // 👈 destructuring the prop passed from getStaticProps
   return (
-    <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-bold">Users</h1>
-      {userList.map((user) => (
-        <UserCard key={user.id} user={user} />
-      ))}
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Users</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {posts.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </div>
     </div>
   );
 }
