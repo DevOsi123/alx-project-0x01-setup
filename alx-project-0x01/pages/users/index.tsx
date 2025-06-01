@@ -1,3 +1,4 @@
+// pages/users/index.tsx
 import { GetStaticProps } from 'next';
 import UserCard from '../../components/common/UserCard';
 import { UserProps } from '../../interfaces';
@@ -6,8 +7,9 @@ interface UsersPageProps {
   posts: UserProps[];
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+// Export getStaticProps exactly like this
+export const getStaticProps: GetStaticProps<UsersPageProps> = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const posts = await response.json();
 
   return {
@@ -17,6 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+// Export default React component named Users
 export default function Users({ posts }: UsersPageProps) {
   return (
     <div className="p-6">
