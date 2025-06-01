@@ -1,19 +1,8 @@
 // components/common/UserCard.tsx
 import React from 'react';
-import { UserProps } from '../../interfaces'; // ✅ Required literal import
+import { UserProps } from '../../interfaces'; // ✅ ALX requires this
 
-// ✅ Use UserProps as a generic type as well
-const UserCard: React.FC<{ user: UserProps }> = ({ user }) => {
-  const {
-    name,
-    username,
-    email,
-    phone,
-    website,
-    address,
-    company,
-  } = user;
-
+const UserCard: React.FC<UserProps> = ({ name, username, email, phone, website, address, company }) => {
   const initials = name
     .split(' ')
     .map((n) => n[0])
