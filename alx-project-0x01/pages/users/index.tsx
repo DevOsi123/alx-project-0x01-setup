@@ -1,6 +1,6 @@
 // pages/users/index.tsx
 import { GetStaticProps } from 'next';
-import UserCard from '../../components/common/UserCards'; // ✅ path depends on where you placed it
+import UserCard from '../../components/common/UserCard'; // ✅ path depends on where you placed it
 import { UserProps } from '../../interfaces'; // ✅ make sure this interface is defined correctly
 
 interface UsersPageProps {

@@ -1,24 +1,39 @@
-import Header from "@/components/layout/Header";
+import React from 'react';
+import Header from '@/components/layout/Header';
+import UserCard from '@/components/common/UserCard'; // adjust path as needed
+import { UserProps } from '@/interfaces';
 
-const Home: React.FC = () => {
-  return (
-    <div className="flex flex-col h-screen">
-      <Header />
-      <main className="flex-grow flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold text-white">
-            Welcome to our Application!
-          </h1>
-          <p className="mt-4 text-xl text-white">
-            Were glad you re here. Explore and enjoy your experience.
-          </p>
-          <button className="mt-6 px-6 py-3 bg-white text-blue-500 rounded-full font-semibold hover:bg-gray-200 transition">
-            Get Started
-          </button>
-            </div>
-      </main>
-    </div>
-  )
+interface UsersProps {
+  users: UserProps[];
 }
 
-export default Home;
+const Users: React.FC<UsersProps> = ({ users }) => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow p-6 bg-gray-50">
+        <h1 className="text-4xl font-bold mb-8 text-center">Users List</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {users.map(user => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+// Example static props function fetching users from an API or local data
+export async function getStaticProps() {
+  // Replace with your actual data source
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users: UserProps[] = await res.json();
+
+  return {
+    props: {
+      users,
+    },
+  };
+}
+
+export default Users;
