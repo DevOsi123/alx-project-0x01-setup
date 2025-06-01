@@ -1,12 +1,12 @@
 // components/common/UserCard.tsx
 import React from 'react';
-import { UserProps } from '../../interfaces';
+import { UserProps as ImportedUserProps } from '../../interfaces';
 
-interface UserCardProps {
-  user: UserProps;
+interface UserProps {
+  user: ImportedUserProps;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user }) => {
+const UserCard: React.FC<UserProps> = ({ user }) => {
   const {
     name,
     username,

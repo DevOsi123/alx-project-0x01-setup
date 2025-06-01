@@ -9,11 +9,11 @@ interface UsersPageProps {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const posts = await response.json();
+  const Users = await response.json();
 
   return {
     props: {
-      posts,
+      Users,
     },
   };
 };
@@ -30,3 +30,4 @@ export default function Users({ posts }: UsersPageProps) { // 👈 destructuring
     </div>
   );
 }
+
