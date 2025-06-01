@@ -53,7 +53,7 @@ export interface PostProps {
 
 export interface PostData{
   userId:number;
-  id?:number;
+  id?: number;
   title:string;
   body:string;
 }
