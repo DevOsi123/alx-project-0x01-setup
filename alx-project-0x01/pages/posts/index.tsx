@@ -13,8 +13,8 @@ const Posts: React.FC<PostsProps> = ({posts}) =>{
       <Header/>
       <main className="p-4">
         <div className="flex justify-between">
-            <h1 className="text-2xl font-semibold">Post Content</h1>
-            <button className="bg-blue-700 px-4 py-2 rounded-full text-white">Add Posts</button>
+            <h1 className="text-2xl font-semibold text-blue-500">Post Content</h1>
+            <button className="bg-blue-700 px-4 py-2 rounded-full text-blue-500">Add Posts</button>
         </div>
         <div className="grid grid-cols-3 gap 2">
         {posts?.map(({title, body,userId, id}: PostProps, key: number) => (
